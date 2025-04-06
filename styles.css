@@ -1,3 +1,14 @@
+:root {
+  --primary-bg: #f8f8f8;
+  --card-bg: #fff;
+  --card-border: #ccc;
+  --text-color-dark: #111;
+  --text-color-light: #fff;
+  --button-bg: #000;
+  --button-hover-bg: #333;
+  --font-primary: 'Great Vibes', cursive, Arial, sans-serif;
+}
+
 /* Global reset */
 * {
   margin: 0;
@@ -13,15 +24,17 @@ body {
   align-items: center;
   background-color: #f8f8f8;
   height: 100vh;
+  /* Let the body scroll if card is too tall */
+  overflow-y: auto;
 }
 
 /* Main container for semantic structure */
 .card-container {
   width: 90%;
   max-width: 900px;
-  margin: 0 auto;
-  /* Doubling the size of the card by scaling it 2x */
-  transform: scale(2);
+  margin: 2rem auto;
+  /* Scale the card by 1.75x on larger screens */
+  transform: scale(1.75);
   transform-origin: center top;
 }
 
@@ -71,6 +84,8 @@ body {
   background-color: #111;
   color: #fff;
   line-height: 1.5;
+  /* Allow scrolling if content is tall */
+  overflow-y: auto;
 }
 
 /* Responsive text styling using clamp() for the front face */
@@ -88,6 +103,9 @@ body {
 .flip-card-back p {
   font-size: clamp(16px, 2vw, 18px);
   margin-bottom: 1rem;
+  max-width: 80%;
+  text-align: center;
+  line-height: 1.6;
 }
 
 /* Increase back heading size */
@@ -95,6 +113,7 @@ body {
   font-size: clamp(1.2rem, 3vw, 2rem);
   margin-top: 1.5rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 /* Button styling */
@@ -117,22 +136,23 @@ button:hover {
 .slideshow {
   position: relative;
   width: 100%;
-  height: 250px; /* Fixed height for the slideshow */
+  height: 300px; /* Slightly bigger for better visibility */
   margin-top: 20px;
   overflow: hidden;
+  border-radius: 8px;
 }
 
+/* Each slideshow image is absolutely positioned and faded in/out */
 .slideshow img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 70%;      /* 40% * 1.75 = 70% */
-  height: 70%;     /* 40% * 1.75 = 70% */
-  object-fit: contain; /* Change to cover if you prefer cropping */
+  width: 100%;   
+  height: 100%;
+  object-fit: cover; /* Fill container, possibly cropping edges */
   opacity: 0;
   animation: fadeAnimation 20s infinite;
 }
-
 
 /* Animation delays for 4 images over a 20s cycle */
 .slideshow img:nth-child(1) {
@@ -150,26 +170,36 @@ button:hover {
 
 /* Keyframes for fade animation over a 20s cycle */
 @keyframes fadeAnimation {
-  0% { opacity: 0; }
-  2% { opacity: 1; }   /* Fade in quickly (~0.4s) */
-  18% { opacity: 1; }  /* Remain visible for ~3.2s */
-  20% { opacity: 0; }  /* Fade out quickly */
+  0%   { opacity: 0; }
+  2%   { opacity: 1; }
+  18%  { opacity: 1; }
+  20%  { opacity: 0; }
   100% { opacity: 0; }
 }
 
-/* Responsive adjustments */
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 900px) {
+  /* Remove or reduce scaling on smaller screens so it doesn't overflow */
+  .card-container {
+    transform: scale(1);
+  }
+}
+
 @media (max-width: 600px) {
   .flip-card {
-    height: 350px;
+    height: 450px;
   }
   .flip-card-front h1 {
-    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-size: clamp(2rem, 5vw, 3rem);
   }
   .flip-card-front h2 {
-    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
   }
   button {
     font-size: 14px;
     padding: 10px 20px;
+  }
+  .slideshow {
+    height: 200px;
   }
 }
