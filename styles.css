@@ -20,6 +20,9 @@ body {
   width: 90%;
   max-width: 900px;
   margin: 0 auto;
+  /* Doubling the size of the card by scaling it 2x */
+  transform: scale(2);
+  transform-origin: center top;
 }
 
 /* Flip card container with 3D perspective */
@@ -62,24 +65,36 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Back face rotated */
+/* Back face rotated and styled for better contrast */
 .flip-card-back {
   transform: rotateY(180deg);
+  background-color: #111;
+  color: #fff;
+  line-height: 1.5;
 }
 
-/* Responsive text using clamp for auto sizing */
+/* Responsive text styling using clamp() for the front face */
 .flip-card-front h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(3rem, 5vw, 4rem);
 }
 .flip-card-front h2 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
 }
 .flip-hint {
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(1rem, 2vw, 1.2rem);
 }
-/* For paragraphs on the back, set a size between 10px and 12px */
+
+/* Increase back paragraph text size and spacing */
 .flip-card-back p {
-  font-size: clamp(10px, 2vw, 12px);
+  font-size: clamp(16px, 2vw, 18px);
+  margin-bottom: 1rem;
+}
+
+/* Increase back heading size */
+.flip-card-back h3 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 /* Button styling */
@@ -102,7 +117,7 @@ button:hover {
 .slideshow {
   position: relative;
   width: 100%;
-  height: 250px; /* Set a fixed height so images are visible */
+  height: 250px; /* Fixed height for the slideshow */
   margin-top: 20px;
   overflow: hidden;
 }
@@ -114,11 +129,11 @@ button:hover {
   left: 0;
   width: 100%;
   height: auto;
-  opacity: 1;
+  opacity: 0;
   animation: fadeAnimation 20s infinite;
 }
 
-/* Animation delays for 4 images (20s cycle) */
+/* Animation delays for 4 images over a 20s cycle */
 .slideshow img:nth-child(1) {
   animation-delay: 0s;
 }
