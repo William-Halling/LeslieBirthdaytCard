@@ -127,8 +127,9 @@ button:hover {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: auto;
+  width: 50%;
+  height: 50%;       /* Set height to fill the container */
+  object-fit: contain; /* Adjust this to 'cover' if you prefer cropping */
   opacity: 0;
   animation: fadeAnimation 20s infinite;
 }
