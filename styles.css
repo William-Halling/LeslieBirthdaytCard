@@ -122,17 +122,17 @@ button:hover {
   overflow: hidden;
 }
 
-/* Each slideshow image is absolutely positioned and faded in/out */
 .slideshow img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 40%;
-  height: 40%;       /* Set height to fill the container */
-  object-fit: contain; /* Adjust this to 'cover' if you prefer cropping */
+  width: 70%;      /* 40% * 1.75 = 70% */
+  height: 70%;     /* 40% * 1.75 = 70% */
+  object-fit: contain; /* Change to cover if you prefer cropping */
   opacity: 0;
   animation: fadeAnimation 20s infinite;
 }
+
 
 /* Animation delays for 4 images over a 20s cycle */
 .slideshow img:nth-child(1) {
