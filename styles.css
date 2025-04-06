@@ -118,7 +118,7 @@ button:hover {
   animation: fadeAnimation 20s infinite;
 }
 
-/* Animation delays for 5 images (4s intervals) */
+/* Animation delays for 4 images (20s cycle) */
 .slideshow img:nth-child(1) {
   animation-delay: 0s;
 }
@@ -131,7 +131,6 @@ button:hover {
 .slideshow img:nth-child(4) {
   animation-delay: 15s;
 }
-
 
 /* Keyframes for fade animation over a 20s cycle */
 @keyframes fadeAnimation {
